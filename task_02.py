@@ -1,21 +1,21 @@
 from collections import deque
 
-def is_palindrome(text: str) -> bool:
-    # очищаємо рядок: нижній регістр + видалення пробілів
-    cleaned = "".join(ch.lower() for ch in text if ch.isalnum())
+def is_it_palindrome(text: str) -> bool:
+    # stripping and normalizing string
+    cleaned_row = "".join(ch.lower() for ch in text if ch.isalnum())
 
-    # створюємо deque і додаємо символи
-    dq = deque(cleaned)
+    # adding symbols into created dequeue
+    my_dequeue = deque(cleaned_row)
 
-    # порівнюємо символи з обох кінців
-    while len(dq) > 1:
-        if dq.popleft() != dq.pop():
+    # comparing symbols from the both sides
+    while len(my_dequeue) > 1:
+        if my_dequeue.popleft() != my_dequeue.pop():
             return False
 
     return True
 
 
-# ---- Приклади використання ----
+# ---- Testing time ----
 tests = [
     "Racecar",
     "A man a plan a canal Panama",
@@ -25,4 +25,4 @@ tests = [
 ]
 
 for t in tests:
-    print(f"{t!r} -> {is_palindrome(t)}")
+    print(f"{t!r} -> {is_it_palindrome(t)}")
